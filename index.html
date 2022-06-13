@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Rank Interactive</title>
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <header>
+      <h4>Page Rank Interactive</h4>
+    </header>
+    <main>
+      <canvas id="canvas"></canvas>
+      <script src="variables.js"></script>
+      <script src="page.js"></script>
+      <script src="Canvas.js"></script>
+      <script src="simulation.js"></script>
+      <script>
+        window.addEventListener("load", function () {
+          setup();
+        });
+      </script>
+    </main>
+  </body>
+</html>

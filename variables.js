@@ -1,0 +1,1 @@
+const startingRadius = 64;
