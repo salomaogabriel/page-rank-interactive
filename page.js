@@ -10,6 +10,7 @@ class Page {
     this.x = x;
     this.y = y;
     this.rank = 0.25;
+    this.prevSize = 0.25;
     this.linkToOthers = [];
     this.numberOfLinkToOthers = 0;
   }
@@ -17,6 +18,7 @@ class Page {
     this.x = x;
     this.y = y;
   }
+
   addNewPageToLinks() {
     this.linkToOthers.push(0);
   }
@@ -30,6 +32,6 @@ class Page {
     this.linkToOthers[position] = 0;
   }
   getLinkRelevance(position) {
-    return this.linkToOtherPage[position] / numberOfLinkToOthers;
+    return this.linkToOthers[position] / this.numberOfLinkToOthers;
   }
 }

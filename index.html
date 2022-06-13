@@ -12,16 +12,21 @@
       <h4>Page Rank Interactive</h4>
     </header>
     <main>
+      <h2>Round:</h2>
       <canvas id="canvas"></canvas>
-      <script src="variables.js"></script>
-      <script src="page.js"></script>
-      <script src="Canvas.js"></script>
-      <script src="simulation.js"></script>
-      <script>
-        window.addEventListener("load", function () {
-          setup();
-        });
-      </script>
+      <button onclick="startSimulation()">Start Simulation</button>
+      <button>Add New Page</button>
+      <button>Remove Page</button>
+      <button>Pause Simulation</button>
     </main>
+    <script src="variables.js"></script>
+    <script src="page.js"></script>
+    <script src="Canvas.js"></script>
+    <script src="simulation.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        setup();
+      });
+    </script>
   </body>
 </html>
