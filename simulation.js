@@ -1,6 +1,6 @@
 let pages = [];
 function createPage(x, y) {
-  var newPage = new Page(x, y);
+  var newPage = new Page(x, y, pages.length);
 
   pages.forEach((page) => {
     newPage.addNewPageToLinks();
@@ -9,6 +9,7 @@ function createPage(x, y) {
   newPage.addNewPageToLinks();
 
   pages.push(newPage);
+  return newPage;
 }
 
 function setup() {
@@ -51,11 +52,11 @@ function getLinks() {
   return allLinks;
 }
 function startSimulation() {
+  isSimulationWorking = true;
   links = getLinks();
 
   // put 16 for 60 fps
   setInterval(updateSimulation, 1000);
-  setInterval(updateCanvas, 16);
 }
 
 function getOldRanks() {
@@ -79,3 +80,29 @@ function updateSimulation() {
     pages[i].rank = newRank;
   }
 }
+
+//helpers
+
+let isSimulationWorking = false;
+let isAdding = false;
+let isRemoving = false;
+let isConnecting = false;
+let addingPage = null;
+function addPage() {
+  if (isSimulationWorking) return;
+  isAdding = true;
+  isRemoving = false;
+  isConnecting = false;
+  addingPage = createPage(10, 10);
+  updateCanvas();
+}
+
+function removePage() {
+  if (isSimulationWorking) return;
+  canvas.style.cursor = "not-allowed";
+  isRemoving = true;
+  isConnecting = false;
+  isAdding = false;
+}
+
+setInterval(updateCanvas, 16);

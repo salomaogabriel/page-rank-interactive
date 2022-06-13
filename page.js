@@ -5,12 +5,13 @@ function createRandomColor() {
 }
 
 class Page {
-  constructor(x, y) {
+  constructor(x, y, id) {
+    this.id = id;
     this.color = createRandomColor();
     this.x = x;
     this.y = y;
     this.rank = 0.25;
-    this.prevSize = 0.25;
+    this.prevSize = 0;
     this.linkToOthers = [];
     this.numberOfLinkToOthers = 0;
   }
@@ -19,6 +20,11 @@ class Page {
     this.y = y;
   }
 
+  removeFromLinks(id) {
+    if (this.linkToOthers[id] != 0) this.numberOfLinkToOthers--;
+
+    this.linkToOthers.splice(id, 1);
+  }
   addNewPageToLinks() {
     this.linkToOthers.push(0);
   }
