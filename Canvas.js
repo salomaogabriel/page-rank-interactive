@@ -1,7 +1,7 @@
 let canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 1000; // equals window dimension
-canvas.height = 500;
+canvas.width = 900; // equals window dimension
+canvas.height = 400;
 
 function createCircle(x, y, rank, color, page) {
   page.prevSize = updateSize(page);
@@ -79,6 +79,7 @@ canvas.addEventListener("click", function (e) {
   //TODO: CHECK if there's any page that was clicked on
   if (isAdding) {
     isAdding = false;
+    updateTableRank();
     addingPage = null;
   } else if (isRemoving) {
     canvas.style.cursor = "auto";
@@ -88,6 +89,7 @@ canvas.addEventListener("click", function (e) {
       );
     });
     if (clicked.length != 0) removeFromPages(clicked.sort(sortByDistance)[0]);
+    updateTableRank();
   } else if (!isSimulationWorking && !isConnecting) {
     var clickedOn = pages.filter(function (value, index, arr) {
       return (
@@ -97,6 +99,7 @@ canvas.addEventListener("click", function (e) {
 
     if (clickedOn.length != 0)
       startConnecting(clickedOn.sort(sortByDistance)[0]);
+    updateTableRank();
   } else if (isConnecting) {
     var connection = pages.filter(function (value, index, arr) {
       return (
@@ -106,6 +109,7 @@ canvas.addEventListener("click", function (e) {
 
     if (connection.length != 0)
       finishConnection(connection.sort(sortByDistance)[0]);
+    updateTableRank();
   }
 });
 
@@ -118,6 +122,7 @@ function removeFromPages(pageToDelete) {
     page.removeFromLinks(pageToDelete.id);
   });
   pages.splice(pageToDelete.id, 1);
+  updateTableRank();
 }
 
 var pageConnectingFrom = null;

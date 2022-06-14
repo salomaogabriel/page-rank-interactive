@@ -5,8 +5,9 @@ function createRandomColor() {
 }
 
 class Page {
-  constructor(x, y, id) {
+  constructor(x, y, id, name) {
     this.id = id;
+    this.name = name;
     this.color = createRandomColor();
     this.x = x;
     this.y = y;
@@ -14,6 +15,7 @@ class Page {
     this.prevSize = 0;
     this.linkToOthers = [];
     this.numberOfLinkToOthers = 0;
+    this.rankOverTime = [];
   }
   move(x, y) {
     this.x = x;

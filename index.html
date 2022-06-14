@@ -6,26 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Rank Interactive</title>
     <link rel="stylesheet" href="site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
   </head>
   <body>
-    <header>
-      <h4>Page Rank Interactive</h4>
-    </header>
-    <main>
-      <h2>Round:</h2>
-      <canvas id="canvas"></canvas>
-      <button onclick="startSimulation()">Start Simulation</button>
-      <button onclick="addPage()">Add New Page</button>
-      <button onclick="removePage()">Remove Page</button>
-      <button>Pause Simulation</button>
-    </main>
+    <div class="popup-filter hidden" id="popup-filter">
+      <div class="popup">
+        <span onclick="toggleGraph()">&#x2715;</span>
+        <canvas id="graph" width="800px" height="400px"></canvas>
+      </div>
+    </div>
+    <div class="wrapper">
+      <header>
+        <h4>Page Rank Interactive</h4>
+      </header>
+      <main>
+        <div class="simulation-box">
+          <div class="simulation__header">
+            <div class="buttons">
+              <button onclick="toggleSimulation()" id="toggle-sim-btn">
+                Start Simulation
+              </button>
+              <button onclick="addPage()" class="green">Add New Page</button>
+              <button onclick="removePage()" class="red">Remove Page</button>
+              <button onclick="Reset()">Reset Simulation</button>
+            </div>
+            <h2 id="counter">Round: 0</h2>
+          </div>
+          <canvas id="canvas"></canvas>
+          <div class="show-graph__wrapper">
+            <button class="show-graph" onclick="toggleGraph()">
+              Show Graph
+            </button>
+          </div>
+        </div>
+        <div class="ranks">
+          <table id="elements"></table>
+        </div>
+      </main>
+    </div>
     <script src="variables.js"></script>
     <script src="page.js"></script>
     <script src="Canvas.js"></script>
     <script src="simulation.js"></script>
+    <script src="graph.js"></script>
     <script>
       window.addEventListener("load", function () {
-        setup();
+        fetchNames();
       });
     </script>
   </body>
