@@ -22,9 +22,23 @@ body {
   border: 1px solid #323232;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 }
+header {
+  display: flex;
+}
+.settings-btn {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  transition: 200ms;
+  fill: rgba(153, 102, 255, 0.6);
+}
+.settings-btn:hover {
+  fill: rgb(153, 102, 255);
+}
+
 main {
   display: inline-block;
-  float: left;
   margin: auto;
   width: fit-content;
   height: fit-content;
@@ -67,7 +81,6 @@ h2 {
   font-weight: 100;
   font-size: 32px;
   padding: 16px;
-  border-bottom: 1px solid white;
 }
 .green {
   background-color: rgba(75, 192, 192, 0.2);
@@ -102,7 +115,14 @@ h2 {
   top: -44px;
   border-radius: 0px 4px 0px 12px;
 }
-.show-graph:hover {
+.grey {
+  background-color: #323232;
+  border: 0;
+  font-weight: bold;
+  border-radius: 0px 4px 0px 12px;
+}
+.show-graph:hover,
+.grey:hover {
   transform: none;
   background-color: white;
   color: #323232;
@@ -190,4 +210,41 @@ header {
   box-shadow: 0px 0px 20px rgba(153, 102, 255, 0.2);
   border-radius: 12px;
   margin-bottom: 20px;
+}
+
+.yellow {
+  border-color: rgb(251, 251, 35);
+  box-shadow: 0px 0px 20px rgba(251, 251, 35, 0.2);
+}
+.blue {
+  border-color: rgb(71, 35, 251);
+  box-shadow: 0px 0px 20px rgba(71, 35, 251, 0.2);
+}
+.popup__header {
+  display: flex;
+  align-items: center;
+}
+.popup img {
+  height: 40px;
+}
+.options {
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #323232;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+}
+.sign {
+  text-align: center;
+  vertical-align: middle;
+  margin: 10px;
+  width: 40px;
+}
+#speed,
+#speed:hover,
+#speed:active {
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  cursor: auto;
+  transform: scale(1);
 }

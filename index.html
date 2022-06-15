@@ -21,13 +21,121 @@
         <canvas id="graph" width="800px" height="400px"></canvas>
       </div>
     </div>
+    <div class="popup-filter" id="warning">
+      <div class="popup yellow">
+        <span
+          onclick="document.getElementById('warning').classList.add('hidden')"
+          >&#x2715;</span
+        >
+        <div class="popup__header">
+          <img src="warning.svg" alt="warning" />
+
+          <h2>Information</h2>
+          <img src="warning.svg" alt="warning" />
+        </div>
+        <p style="font-weight: 100; font-size: 18px">
+          This is a basic demonstration of the Page Rank Algorithm made by
+          google <br />
+          created for a Linear Algebra Project.*
+          <br />
+          <br />
+          Students: Gabriel Salomão, Guilherme Dourado, Lucca Chastinet
+          <br />
+          Teacher: Juan Gonzalez
+          <br />
+          UFBA - Universidade Federal da Bahia - 2022
+        </p>
+
+        <button
+          class="red"
+          style="
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            style="margin-right: 5px"
+          >
+            <path
+              d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+              fill="#FF0000"
+            />
+          </svg>
+          Watch Video (portuguese)
+        </button>
+        <div style="margin-top: 40px; font-size: 12px; font-weight: 100">
+          *Not the best website in terms of web design
+        </div>
+      </div>
+    </div>
+    <div class="popup-filter hidden" id="popup-filter-settings">
+      <div class="popup blue">
+        <span onclick="toggleSettings()">&#x2715;</span>
+        <div class="popup__header">
+          <img src="help.svg" alt="warning" />
+
+          <h2>Help menu</h2>
+          <img src="help.svg" alt="warning" />
+        </div>
+        <p style="font-weight: 100">
+          Click <button class="green">Add Page</button> and then click in the
+          screen where you want that Page to be located.
+          <br />
+          <br />
+          Click <button class="red">Remove Page</button> and then select the
+          page that you want to remove.
+          <br />
+          <br />
+          Click <button>Start Simulation</button> to start the simulation.
+          <br />
+          <br />
+          Click <button>Reset Simulation</button> to reset the simulation to its
+          initial state (4 pages).
+          <br />
+          <br />
+          Click <button class="grey">Show Graph</button> to open the graph
+          simulation.
+          <br />
+          <br />
+          Click in one page and drag to make a connection between then.
+        </p>
+        <div class="options">
+          <p style="font-weight: 100; font-size: 22px">
+            Change Simulation Speed
+          </p>
+          <button class="red sign" onclick="changeSpeed(1)">&#727;</button>
+          <button id="speed">1 second</button>
+          <button class="green sign" onclick="changeSpeed(-1)">&#65291;</button>
+        </div>
+      </div>
+    </div>
     <div class="wrapper">
       <header>
-        <h4>Page Rank Interactive</h4>
+        <h2>Page Rank Interactive</h2>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          class="settings-btn"
+          onclick="toggleSettings()"
+        >
+          <path
+            d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 18.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25c.691 0 1.25.56 1.25 1.25s-.559 1.25-1.25 1.25zm1.961-5.928c-.904.975-.947 1.514-.935 2.178h-2.005c-.007-1.475.02-2.125 1.431-3.468.573-.544 1.025-.975.962-1.821-.058-.805-.73-1.226-1.365-1.226-.709 0-1.538.527-1.538 2.013h-2.01c0-2.4 1.409-3.95 3.59-3.95 1.036 0 1.942.339 2.55.955.57.578.865 1.372.854 2.298-.016 1.383-.857 2.291-1.534 3.021z"
+          />
+        </svg>
       </header>
       <main>
         <div class="simulation-box">
           <div class="simulation__header">
+            <h2 id="counter">Round: 0</h2>
+
             <div class="buttons">
               <button onclick="toggleSimulation()" id="toggle-sim-btn">
                 Start Simulation
@@ -36,7 +144,6 @@
               <button onclick="removePage()" class="red">Remove Page</button>
               <button onclick="Reset()">Reset Simulation</button>
             </div>
-            <h2 id="counter">Round: 0</h2>
           </div>
           <canvas id="canvas"></canvas>
           <div class="show-graph__wrapper">

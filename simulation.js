@@ -58,6 +58,37 @@ function getLinks() {
 
   return allLinks;
 }
+let speed = 2;
+function changeSpeed(num) {
+  speed += num;
+  if (speed < 0) {
+    speed = 0;
+  }
+  if (speed > 6) {
+    speed = 6;
+  }
+  document.getElementById("speed").innerHTML =
+    getFormattedSimSpeed()["description"];
+}
+
+function getFormattedSimSpeed() {
+  const lookup = [
+    { value: 0, description: "10 seconds", actualSpeed: 10000 },
+    { value: 1, description: "5 seconds", actualSpeed: 5000 },
+    { value: 2, description: "1 second", actualSpeed: 1000 },
+    { value: 3, description: "500 miliseconds", actualSpeed: 500 },
+    { value: 4, description: "100 miliseconds", actualSpeed: 100 },
+    { value: 5, description: "30 fps", actualSpeed: 32 },
+    { value: 6, description: "60 fps", actualSpeed: 16 },
+  ];
+  return lookup
+    .slice()
+    .reverse()
+    .find(function (item) {
+      return speed >= item.value;
+    });
+}
+
 function startSimulation() {
   if (isSimulationWorking) return;
 
@@ -67,7 +98,10 @@ function startSimulation() {
   links = getLinks();
   updateTableRank();
   // put 16 for 60 fps
-  simInterval = setInterval(updateSimulation, 1000);
+  simInterval = setInterval(
+    updateSimulation,
+    getFormattedSimSpeed()["actualSpeed"]
+  );
 }
 var simInterval = null;
 function getOldRanks() {
@@ -107,7 +141,9 @@ function restartSimulation() {
   });
   clearInterval(simInterval);
   updateTableRank();
+  document.getElementById("toggle-sim-btn").innerHTML = "Start Simulation";
   iteration = 0;
+  document.getElementById("counter").innerHTML = "Round: " + iteration;
 }
 //helpers
 var iteration = 0;

@@ -40,6 +40,7 @@ class Page {
     this.linkToOthers[position] = 0;
   }
   getLinkRelevance(position) {
+    if (this.numberOfLinkToOthers == 0) return 0;
     return this.linkToOthers[position] / this.numberOfLinkToOthers;
   }
 }

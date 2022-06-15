@@ -64,3 +64,6 @@ function ResetData() {
 function toggleGraph() {
   document.getElementById("popup-filter").classList.toggle("hidden");
 }
+function toggleSettings() {
+  document.getElementById("popup-filter-settings").classList.toggle("hidden");
+}
